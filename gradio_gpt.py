@@ -2,15 +2,12 @@ import gradio as gr
 import requests
 import os
 import openai
-import logging
 from gradio import components
 
 openai.api_key = "openai api-key"
 
 def call_gpt_api(prompt):
-    logging.info("호출")
     try:
-        logging.info("여긴 들어옴")
         completion = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
@@ -21,7 +18,6 @@ def call_gpt_api(prompt):
         return completion.choices[0].message.content
     
     except Exception as e:
-        logging.error(e)
         return "Error: API call failed"
 
 
